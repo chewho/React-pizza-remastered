@@ -23,3 +23,17 @@
   left: 12px;
   top: 12px;
 }
+
+.clearIcon {
+  width: 30px;
+  height: 30px;
+  opacity: 0.3;
+  position: absolute;
+  top: 7px;
+  right: 5px;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
