@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import { SearchContext } from "../App";
 
 import Categories from "../components/Categories";
@@ -30,14 +31,15 @@ const Home = () => {
     const category = categoryId > 0 ? `category=${categoryId}` : "";
     const search = searchValue ? `&search=${searchValue}` : "";
 
-    fetch(
-      `https://64b926cd79b7c9def6c0a704.mockapi.io/items?page=${currentPage}&limit=4&${category}&sortBy=${sortBy}${search}`
-    )
-      .then((res) => res.json())
-      .then((arr) => {
-        setItems(arr);
+    axios
+      .get(
+        `https://64b926cd79b7c9def6c0a704.mockapi.io/items?page=${currentPage}&limit=4&${category}&sortBy=${sortBy}${search}`
+      )
+      .then((res) => {
+        setItems(res.data);
         setIsLoading(false);
       });
+
     window.scrollTo(0, 0);
   }, [categoryId, sort.sortProperty, searchValue, currentPage]);
 
