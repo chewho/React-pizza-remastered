@@ -61,36 +61,37 @@ const Home = () => {
 
       navigate(`?${queryString}`);
     }
+    getPizzas();
     isMounted.current = true;
-  }, [categoryId, sort.sortProperty, currentPage]);
+  }, [categoryId, sort.sortProperty, currentPage, searchValue]);
 
   // If it was first render check URL-params and save it into redux
-  React.useEffect(() => {
-    if (window.location.search) {
-      const params = qs.parse(window.location.search.substring(1));
+  // React.useEffect(() => {
+  //   if (window.location.search) {
+  //     const params = qs.parse(window.location.search.substring(1));
 
-      const sort = list.find((obj) => obj.sortProperty === params.sortProperty);
+  //     const sort = list.find((obj) => obj.sortProperty === params.sortProperty);
 
-      dispatch(
-        setFilters({
-          ...params,
-          sort,
-        })
-      );
-      isSearch.current = true;
-    }
-  }, []);
+  //     dispatch(
+  //       setFilters({
+  //         ...params,
+  //         sort,
+  //       })
+  //     );
+  //     isSearch.current = true;
+  //   }
+  // }, []);
 
   // If it was first render fetch pizzas
-  React.useEffect(() => {
-    window.scrollTo(0, 0);
+  // React.useEffect(() => {
+  //   window.scrollTo(0, 0);
 
-    if (!isSearch.current) {
-      getPizzas();
-    }
+  //   if (!isSearch.current) {
+  //     getPizzas();
+  //   }
 
-    isSearch.current = false;
-  }, [categoryId, sort.sortProperty, searchValue, currentPage]);
+  //   isSearch.current = false;
+  // }, []);
 
   const pizzas = items.map((obj) => <PizzaBlock key={obj.id} {...obj} />);
 
@@ -103,7 +104,14 @@ const Home = () => {
         <Sort />
       </div>
       <h2 className="content__title">Все пиццы</h2>
-      <div className="content__items">{status === "loading" ? skeletons : pizzas}</div>
+      {status === "error" ? (
+        <div className="content__error-info">
+          <h2>Произошла ошибка 😕</h2>
+          <p>К сожалению, не удалось получить питсы. Попробуйте повторить попытку позже.</p>
+        </div>
+      ) : (
+        <div className="content__items">{status === "loading" ? skeletons : pizzas}</div>
+      )}
       <Pagination currentPage={currentPage} onChangePage={onChangePage} />
     </div>
   );
