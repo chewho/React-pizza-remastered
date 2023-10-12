@@ -66,21 +66,21 @@ const Home = () => {
   }, [categoryId, sort.sortProperty, currentPage, searchValue]);
 
   // If it was first render check URL-params and save it into redux
-  // React.useEffect(() => {
-  //   if (window.location.search) {
-  //     const params = qs.parse(window.location.search.substring(1));
+  React.useEffect(() => {
+    if (window.location.search) {
+      const params = qs.parse(window.location.search.substring(1));
 
-  //     const sort = list.find((obj) => obj.sortProperty === params.sortProperty);
+      const sort = list.find((obj) => obj.sortProperty === params.sortProperty);
 
-  //     dispatch(
-  //       setFilters({
-  //         ...params,
-  //         sort,
-  //       })
-  //     );
-  //     isSearch.current = true;
-  //   }
-  // }, []);
+      dispatch(
+        setFilters({
+          ...params,
+          sort,
+        })
+      );
+      isSearch.current = true;
+    }
+  }, []);
 
   // If it was first render fetch pizzas
   // React.useEffect(() => {
