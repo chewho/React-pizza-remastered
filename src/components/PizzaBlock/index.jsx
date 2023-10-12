@@ -7,7 +7,7 @@ const typeNames = ["Тонкое", "Традиционное"];
 
 const PizzaBlock = ({ id, title, price, imageUrl, sizes, types }) => {
   const dispatch = useDispatch();
-  const cartItem = useSelector(selectCartItemById);
+  const cartItem = useSelector(selectCartItemById(id));
 
   const [activeType, setActiveType] = React.useState(0);
   const [activeSize, setActiveSize] = React.useState(0);
