@@ -1,7 +1,7 @@
 import React from "react";
 import qs from "qs";
 import { useNavigate, Link } from "react-router-dom";
-import { SearchContext } from "../App";
+// import { SearchContext } from "../App";
 
 import Categories from "../components/Categories";
 import Sort from "../components/Sort";
