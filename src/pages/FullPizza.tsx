@@ -6,7 +6,7 @@ const FullPizza: React.FC = () => {
   const [pizza, setPizza] = React.useState<{
     imageUrl: string;
     title: string;
-    price: string;
+    price: number;
   }>();
   const { id } = useParams();
   const navigate = useNavigate();

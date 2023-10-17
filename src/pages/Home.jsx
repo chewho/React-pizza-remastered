@@ -8,7 +8,7 @@ import Sort from "../components/Sort";
 import PizzaBlock from "../components/PizzaBlock";
 import Skeleton from "../components/PizzaBlock/Skeleton";
 import Pagination from "../components/Pagination";
-import { list } from "../components/Sort";
+import { sortList } from "../components/Sort";
 
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -73,7 +73,7 @@ const Home = () => {
     if (window.location.search) {
       const params = qs.parse(window.location.search.substring(1));
 
-      const sort = list.find((obj) => obj.sortProperty === params.sortProperty);
+      const sort = sortList.find((obj) => obj.sortProperty === params.sortProperty);
 
       dispatch(
         setFilters({
