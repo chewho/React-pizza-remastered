@@ -26,13 +26,14 @@ const Sort = () => {
     setOpen(false);
   };
 
-  React.useEffect(() => {
-    const handleClickOutside = (event: any) => {
-      if (sortRef.current && !sortRef.current.contains(event.target)) {
-        setOpen(false);
-      }
-    };
+  const handleClickOutside = (event: MouseEvent) => {
+    const target = event.target as Node;
+    if (sortRef.current && !sortRef.current.contains(target)) {
+      setOpen(false);
+    }
+  };
 
+  React.useEffect(() => {
     document.body.addEventListener("click", handleClickOutside);
 
     return () => {
