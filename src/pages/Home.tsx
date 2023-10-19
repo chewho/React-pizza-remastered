@@ -1,6 +1,6 @@
 import React from "react";
 import qs from "qs";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 // import { SearchContext } from "../App";
 
 import Categories from "../components/Categories";
@@ -98,11 +98,7 @@ const Home: React.FC = () => {
   //   isSearch.current = false;
   // }, []);
 
-  const pizzas = items.map((obj: any) => (
-    <Link key={obj.id} to={`/pizza/${obj.id}`}>
-      <PizzaBlock {...obj} />
-    </Link>
-  ));
+  const pizzas = items.map((obj: any) => <PizzaBlock key={obj.id} {...obj} />);
 
   const skeletons = [...new Array(4)].map((_, index) => <Skeleton key={index} />);
 
