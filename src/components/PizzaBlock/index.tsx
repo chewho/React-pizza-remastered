@@ -18,7 +18,7 @@ const PizzaBlock: React.FC<PizzaBlockProps> = ({ id, title, price, imageUrl, siz
   const dispatch = useDispatch();
   const cartItem = useSelector(selectCartItemById(id));
 
-  const [activeType, setActiveType] = React.useState(0);
+  const [activeType, setActiveType] = React.useState(types[0]);
   const [activeSize, setActiveSize] = React.useState(0);
 
   const addedCount = cartItem ? cartItem.count : 0;
