@@ -39,6 +39,10 @@
 
     p {
       color: #7b7b7b;
+
+      @media (max-width: 490px) {
+        display: none;
+      }
     }
   }
 }
