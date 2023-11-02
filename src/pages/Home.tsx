@@ -1,7 +1,6 @@
 import React from "react";
 import qs from "qs";
 import { useNavigate } from "react-router-dom";
-// import { SearchContext } from "../App";
 
 import Categories from "../components/Categories";
 import Sort from "../components/Sort";
@@ -84,17 +83,6 @@ const Home: React.FC = () => {
     }
     isSearch.current = true;
   }, []);
-
-  // If it was first render fetch pizzas
-  // React.useEffect(() => {
-  //   window.scrollTo(0, 0);
-
-  //   if (!isSearch.current) {
-  //     getPizzas();
-  //   }
-
-  //   isSearch.current = false;
-  // }, []);
 
   const pizzas = items.map((obj: any) => <PizzaBlock key={obj.id} {...obj} />);
 
